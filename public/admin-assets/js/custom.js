@@ -202,6 +202,34 @@ $(document).ready(function(){
         });
     });
 
+    //update Image status...........
+    $(document).on('click','.updateImageStatus',function(){
+        // alert('hello');
+        var status = $(this).children("i").attr("status");
+        var image_id = $(this).attr('image_id');
+        // alert(image_id);
+        // alert(status);
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type:"post",
+            url:"http://localhost/MultiVendor-Ecommerce/public/admin/update-product-image-status",
+            data:{status:status,image_id:image_id},
+            success:function(response){
+                // alert(response);
+                if(response['status']==0){
+                    $("#image-"+image_id).html("<i style=\"font-size: 30px;\" class=\"mdi mdi-bookmark-outline\" status=\"InActive\"></i>")
+                }else if(response['status']==1){
+                    $("#image-"+image_id).html("<i style=\"font-size: 30px;\" class=\"mdi mdi-bookmark-check\" status=\"Active\"></i>")
+                }
+            },
+            error:function(){
+                alert("error");
+            },
+        });
+    });
+
     // Delete..........
     $(document).on('click','#confirmDelete',function(e){
         e.preventDefault();

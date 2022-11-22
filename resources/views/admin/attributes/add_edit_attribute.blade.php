@@ -57,11 +57,12 @@
                                 </div>
                             </div>
                             <button type="submit" class="form-control btn btn-primary mr-2">Submit</button>
-                        </form><hr>
-                        <br><h4 class="card-title">Product Attributes</h4>
+                        </form>
+                        <hr>
+                        <h4 class="card-title mb-4">Product Attributes</h4>
 
-{{--                        <form action="{{ route('edit-product-attribute',$product->id) }}" method="post">--}}
-{{--                            @csrf--}}
+                        <form action="{{ route('edit-product-attribute',$product->id) }}" method="post">
+                            @csrf
                             <table id="categories" class="table table-striped table-bordered">
                                 <thead>
                                 <tr>
@@ -75,46 +76,32 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-{{--                                <input type="text" name="product_id" value="{{ $product->id }}">--}}
                                 @foreach($product['attributes'] as $attribute)
-                                    {{--                                    <input type="hidden" name="attributeId[]" value="{{ $attribute['id'] }}">--}}
-                                    <form action="{{ route('abcd',$attribute->id) }}" method="post">
-                                        @csrf
-                                        <tr>
-                                            <td>
-                                                <input type="text" name="ids" value="{{$attribute->id}}">
-                                                {{ $attribute->id}}</td>
-                                            <td>
-                                                <input type="text" name="sizes" value="{{$attribute->size}}">
-                                                {{ $attribute->size }} </td>
-                                            <td>
-                                                <input type="text" name="skus" value="{{$attribute->sku}}">
-                                                {{ $attribute->sku }}</td>
-                                            <td>
-                                                <input type="number" name="price" value="{{ $attribute->price }}" style="width: 70px;" required>
-                                            </td>
-                                            <td>
-                                                <input type="number" name="stock[]" value="{{ $attribute->stock }}" style="width: 70px;" required>
-                                            </td>
-                                            <td>
-
-                                                @if($attribute['status']==1)
-                                                    <a href="javascript:void(0)" class="updateAttributeStatus" id="attribute-{{ $attribute['id'] }}" attribute_id="{{ $attribute['id'] }}"><i style="font-size:30px;" class="mdi mdi-bookmark-check" status="Active"></i></a>
-                                                @else
-                                                    <a href="javascript:void(0)" class="updateAttributeStatus" id="attribute-{{ $attribute['id'] }}" attribute_id="{{ $attribute['id'] }}"><i style="font-size: 30px;" class="mdi mdi-bookmark-outline" status="InActive"></i></a>
-                                                @endif
-
-                                            </td>
-                                            <td><a id="confirmDelete" href="{{ route('delete-product-attribute',$attribute['id']) }}"><i class="mdi mdi-file-excel-box" style="font-size: 30px;"></i></a></td>
-                                            <button type="submit" class="btn btn-info">Updatesdfs</button>
-                                        </tr>
-
-                                    </form>
+                                    <input type="text" style="display: none" name="attributeId[]" value="{{ $attribute['id'] }}">
+                                    <tr>
+                                        <td>{{ $attribute['id']}}</td>
+                                        <td>{{ $attribute['size'] }} </td>
+                                        <td>{{ $attribute['sku'] }}</td>
+                                        <td>
+                                            <input type="number" name="price[]" value="{{ $attribute->price }}" style="width: 70px;" required>
+                                        </td>
+                                        <td>
+                                            <input type="number" name="stock[]" value="{{ $attribute->stock }}" style="width: 70px;" required>
+                                        </td>
+                                        <td>
+                                            @if($attribute['status']==1)
+                                                <a href="javascript:void(0)" class="updateAttributeStatus" id="attribute-{{ $attribute['id'] }}" attribute_id="{{ $attribute['id'] }}"><i style="font-size:30px;" class="mdi mdi-bookmark-check" status="Active"></i></a>
+                                            @else
+                                                <a href="javascript:void(0)" class="updateAttributeStatus" id="attribute-{{ $attribute['id'] }}" attribute_id="{{ $attribute['id'] }}"><i style="font-size: 30px;" class="mdi mdi-bookmark-outline" status="InActive"></i></a>
+                                            @endif
+                                        </td>
+                                        <td><a id="confirmDelete" href="{{ route('delete-product-attribute',$attribute['id']) }}"><i class="mdi mdi-file-excel-box" style="font-size: 30px;"></i></a></td>
+                                    </tr>
                                 @endforeach
                                 </tbody>
                             </table>
                             <button class="btn btn-outline-primary" type="submit">Update Attribute</button>
-{{--                        </form>--}}
+                        </form>
                     </div>
                 </div>
             </div>

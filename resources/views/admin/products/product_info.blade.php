@@ -53,11 +53,13 @@
                                         <td>{{ $product['section']['name'] }}</td>
                                         <td>{{ $product['category']['category_name'] }}</td>
                                         <td>
-                                            @if(!empty($product->product_image))
-                                                <img src="{{ asset('admin/images/products/large/'.$product->product_image) }}" style="width: 70px;height: 70px;" alt="">
-                                            @else
-                                                <img src="{{ asset('admin/images/products/small/no_image.png') }}" style="width: 70px;height:70px;" alt="">
-                                            @endif
+{{--                                            @if(!empty($product->product_image))--}}
+{{--                                                <img src="{{ asset('admin/images/products/large/'.$product->product_image) }}" style="width: 70px;height: 70px;" alt="">--}}
+{{--                                                <img src="{{ (!empty($product->product_image))?asset('admin/images/products/large/'.$product->product_image):url('admin/images/products/small/no_image.png') }}" alt="">--}}
+                                                <img src="{{ (!empty($product->product_image))?asset($product->product_image):url('front/no_image.png') }}" alt="">
+{{--                                            @else--}}
+{{--                                                <img src="{{ asset('admin/images/products/small/no_image.png') }}" style="width: 70px;height:70px;" alt="">--}}
+{{--                                            @endif--}}
                                         </td>
                                         <td>
                                             @if($product->admin_type=='vendor')
@@ -74,10 +76,10 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ route('add-edit-product',$product['id']) }}" ><i class="mdi mdi-pencil-box" style="font-size: 30px;"></i></a>
-                                            <a href="{{ route('add-edit-attribute',$product['id']) }}" ><i class="mdi mdi-plus-box" style="font-size: 30px;"></i></a>
+                                            <a href="{{ route('add-edit-product',$product['id']) }}" title="Edit Product"><i class="mdi mdi-pencil-box" style="font-size: 30px;"></i></a>
+                                            <a href="{{ route('add-edit-attribute',$product['id']) }}" title="Add Attribute"><i class="mdi mdi-plus-box" style="font-size: 30px;"></i></a>
                                             <a href="{{ route('add-images',$product->id) }}" title="Add Multiple Image"><i class="mdi mdi-library-plus" style="font-size: 30px;"></i></a>
-                                            <a id="confirmDelete" href="{{ route('delete-product',$product['id']) }}"><i class="mdi mdi-file-excel-box" style="font-size: 30px;"></i></a>
+                                            <a id="confirmDelete" href="{{ route('delete-product',$product['id']) }}" title="Delete Image"><i class="mdi mdi-file-excel-box" style="font-size: 30px;"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

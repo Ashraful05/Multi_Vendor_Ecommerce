@@ -20,7 +20,8 @@
                                 </button>
                             </div>
                         @endif
-                        <form class="forms-sample" @if(empty($product->id)) action="{{ url('admin/add-edit-product') }}"
+                        <form class="forms-sample"
+                              @if(empty($product->id)) action="{{ url('admin/add-edit-product') }}"
                               @else action="{{ route('add-edit-product',$product->id) }}" @endif  method="post" enctype="multipart/form-data">
                             @csrf
 
@@ -91,8 +92,10 @@
                             <div class="form-group">
                                 <label for="product_image">Product Image</label>
                                 <input type="file" name="product_image" class="form-control" id="product_image">
+                                <img src="{{ (!empty($product->product_image))?asset($product->product_image):url('front/no_image.png') }}" alt="" style="height: 100px;width: 100px;">
                                 @if(!empty($product->product_image))
-                                    <a target="_blank" href="{{ url('admin/images/products/large/'.$product->product_image) }}">View Image</a>&nbsp;|&nbsp;
+                                    <a target="_blank" href="{{ asset($product->product_image) }}">View Image</a>&nbsp;|&nbsp;
+
                                     <a href="javascript:void(0)" class="confirmDeleteImage" module="product-image" moduleid="{{ $product->id }}">Delete Image</a>
                                 @endif
                             </div>
@@ -125,7 +128,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="is_featured">Featured Item</label>
-                                <input type="checkbox" name="is_featured" id="is_featured" class="" value="Yes" @if(!empty($product->is_featured) && $product->is_featured =='Yes') checked="" @endif>
+                                <input type="checkbox" name="is_featured" id="is_featured" class=""
+                                       value="Yes" @if(!empty($product->is_featured) && $product->is_featured =='Yes') checked="" @endif>
                             </div>
                             <button type="submit" class="form-control btn btn-primary mr-2">Submit</button>
                         </form>

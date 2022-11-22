@@ -39,11 +39,7 @@
                                 &nbsp;{{ $product->product_price }}
                             </div>
                             <div class="form-group">
-                                @if(!empty($product->product_image))
-                                    <img src="{{ url('admin/images/products/large/'.$product->product_image) }}" style="width: 120px;height: 120px;">
-                                @else
-                                    <img src="{{ url('admin/images/products/large/no_image.png') }}" style="width: 120px;height: 120px;" alt="">
-                                @endif
+                                <img src="{{ (!empty($product->product_image))?asset($product->product_image):url('front/no_image.png') }}" alt="">
                             </div>
                             <div class="form-group">
                                 <div class="field_wrapper">
@@ -60,6 +56,7 @@
                                 <tr>
                                     <th>ID#</th>
                                     <th>Image</th>
+                                    <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
@@ -68,7 +65,7 @@
                                     <tr>
                                         <td>{{ $image->id}}</td>
                                         <td>
-                                            <img src="{{ url('admin/images/products/medium/'.$image->image) }}" alt="">
+                                            <img src="{{ (!empty($image->image))?asset($image->image):url('front/no_image.png') }}" alt="">
                                         </td>
                                         <td>
                                             @if($image->status==1)
@@ -81,7 +78,7 @@
                                                 </a>
                                             @endif
                                         </td>
-                                        <td><a id="confirmDelete" href="{{ route('delete-product-attribute',$attribute['id']) }}"><i class="mdi mdi-file-excel-box" style="font-size: 30px;"></i></a></td>
+                                        <td><a id="confirmDelete" href="{{ route('delete_product_multiple_image',$image['id']) }}"><i class="mdi mdi-file-excel-box" style="font-size: 30px;"></i></a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
