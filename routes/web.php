@@ -1,11 +1,12 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Front\FrontController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Route::get('/dashboard', function () {
 //    return view('dashboard');
@@ -14,6 +15,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
+//admin routes....
 Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function(){
     //Admin login route.....
     Route::match(['get','post'],'/login',[AdminController::class,'login'])->name('admin.login');
@@ -47,6 +49,8 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
 
         //sections....
         Route::get('sections',[\App\Http\Controllers\Admin\SectionController::class,'sections'])->name('admin.sections');
+
+
         //Update section status...
         Route::post('/update-section-status',[\App\Http\Controllers\Admin\SectionController::class,'updateSectionStatus'])->name('update-section-status');
         Route::get('delete/section/{id}',[\App\Http\Controllers\Admin\SectionController::class,'deleteSection'])->name('delete-section');
@@ -54,6 +58,8 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
 
         //Categories....
         Route::get('categories',[\App\Http\Controllers\Admin\CategoryController::class,'categories'])->name('categories');
+
+
         //update category status...
         Route::post('/update-category-status',[\App\Http\Controllers\Admin\CategoryController::class,'updateCategoryStatus'])->name('update-category-status');
         Route::match(['get','post'],'add-edit-category/{id?}',[\App\Http\Controllers\Admin\CategoryController::class,'addEditCategory'])->name('add-edit-category');
@@ -64,9 +70,12 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
 
         //brands.......
         Route::get('brands',[\App\Http\Controllers\Admin\BrandController::class,'brands'])->name('brands');
+
         //update brand status...
         Route::post('/update-brand-status',[\App\Http\Controllers\Admin\BrandController::class,'updateBrandStatus'])->name('update-brand-status');
         Route::match(['get','post'],'add-edit-brand/{id?}',[\App\Http\Controllers\Admin\BrandController::class,'addEditBrand'])->name('add-edit-brand');
+
+
         //append brand route...
         Route::get('/append-brands-level',[\App\Http\Controllers\Admin\BrandController::class,'appendBrandLevel'])->name('append-brands-level');
         Route::get('/delete/brand/{id}',[\App\Http\Controllers\Admin\BrandController::class,'deleteBrand'])->name('delete-brand');
@@ -79,6 +88,8 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::get('/delete/product/{id}',[\App\Http\Controllers\Admin\ProductController::class,'deleteProduct'])->name('delete-product');
         Route::get('/delete-product-image/{id}',[\App\Http\Controllers\Admin\ProductController::class,'deleteProductImage'])->name('delete-product-image');
         Route::get('/delete-product-video/{id}',[\App\Http\Controllers\Admin\ProductController::class,'deleteProductVideo'])->name('delete-product-video');
+
+
         //products attribute....
         Route::match(['get','post'],'/add-edit-attribute/{id}',[\App\Http\Controllers\Admin\ProductController::class,'addEditAttribute'])->name('add-edit-attribute');
         Route::post('/update-product-attribute-status',[\App\Http\Controllers\Admin\ProductController::class,'updateProductAttributeStatus'])->name('update-product-attribute-status');
@@ -92,6 +103,11 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::get('/delete_product_multiple_image/{id}',[\App\Http\Controllers\Admin\ProductController::class,'deleteProductMultipleImage'])->name('delete_product_multiple_image');
     });
 
+});
+
+//frontend routes.........
+Route::controller(FrontController::class)->group(function(){
+    Route::get('/','index');
 });
 
 

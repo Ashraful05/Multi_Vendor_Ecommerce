@@ -15,4 +15,10 @@ class Section extends Model
             ->where(['parent_id'=>0,'status'=>1])
             ->with('subcategories');
     }
+    public static function sections()
+    {
+        $getSections = Section::with('categories')->where('status',1)->get()->toArray();
+        return $getSections;
+    }
+
 }
