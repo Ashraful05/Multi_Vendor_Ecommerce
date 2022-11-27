@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Front\FrontController;
 use Illuminate\Support\Facades\Route;
 
@@ -101,6 +102,15 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::match(['get','post'],'/add-images/{id}',[\App\Http\Controllers\Admin\ProductController::class,'addImages'])->name('add-images');
         Route::post('/update-product-image-status',[\App\Http\Controllers\Admin\ProductController::class,'updateProductImageStatus'])->name('update-product-image-status');
         Route::get('/delete_product_multiple_image/{id}',[\App\Http\Controllers\Admin\ProductController::class,'deleteProductMultipleImage'])->name('delete_product_multiple_image');
+
+        //Banner.........
+        Route::controller(BannerController::class)->prefix('banner')->group(function(){
+            Route::get('slider','sliderBanner')->name('slider_banner');
+            Route::get('add','addBanner')->name('add_banner');
+            Route::get('edit/{id}','editBanner')->name('edit_banner');
+            Route::get('delete/{id}','deleteBanner')->name('delete_banner');
+            Route::post('update-status','updateBannerStatus')->name('update-banner-status');
+        });
     });
 
 });
