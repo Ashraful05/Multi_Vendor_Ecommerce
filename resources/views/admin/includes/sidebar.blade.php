@@ -232,7 +232,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a @if(Session::get('page')=='' || Session::get('page')=='') style="background: #4B49AC !important;color: #fff !important;" @endif class="nav-link" data-toggle="collapse" href="#ui-banners" aria-expanded="false" aria-controls="ui-banners">
+                <a @if(Session::get('page')=='banners' || Session::get('page')=='banners') style="background: #4B49AC !important;color: #fff !important;" @endif class="nav-link" data-toggle="collapse" href="#ui-banners" aria-expanded="false" aria-controls="ui-banners">
                     <i class="icon-layout menu-icon"></i>
                     <span class="menu-title">Banner Management</span>
                     <i class="menu-arrow"></i>
@@ -240,7 +240,7 @@
                 <div class="collapse" id="ui-banners">
                     <ul class="nav flex-column sub-menu">
                         <li class="nav-item">
-                            <a @if(Session::get('page')=='') style="background: #4B49AC !important; color: #fff !important;" @else style="background: #fff;!important;color:#4B49AC;!important;" @endif class="nav-link" href="{{ route('slider_banner') }}">Slider Banner</a>
+                            <a @if(Session::get('page')=='banners') style="background: #4B49AC !important; color: #fff !important;" @else style="background: #fff;!important;color:#4B49AC;!important;" @endif class="nav-link" href="{{ route('slider_banner') }}">Slider Banner</a>
                         </li>
 
                     </ul>

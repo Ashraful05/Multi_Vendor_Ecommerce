@@ -38,7 +38,7 @@
                                             {{ $banner->id}}
                                         </td>
                                         <td>
-                                            <img src="{{ (!empty($banner->image))?asset('admin/images/banner_images/'.$banner->image):'' }}" alt="">
+                                            <img src="{{ !(empty($banner->image))?asset($banner->image):url('admin/images/no_image.png') }}" alt="">
                                         </td>
                                         <td>{{ $banner->link }}</td>
                                         <td>{{ $banner->title }}</td>

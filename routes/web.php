@@ -107,7 +107,9 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::controller(BannerController::class)->prefix('banner')->group(function(){
             Route::get('slider','sliderBanner')->name('slider_banner');
             Route::get('add','addBanner')->name('add_banner');
+            Route::post('save','saveBanner')->name('save_banner');
             Route::get('edit/{id}','editBanner')->name('edit_banner');
+            Route::post('update/{id}','updateBanner')->name('update_banner');
             Route::get('delete/{id}','deleteBanner')->name('delete_banner');
             Route::post('update-status','updateBannerStatus')->name('update-banner-status');
         });
