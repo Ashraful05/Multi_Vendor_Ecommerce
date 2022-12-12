@@ -3,19 +3,18 @@
 @section('front_content')
     <!-- Main-Slider -->
     <div class="default-height ph-item">
+
         <div class="slider-main owl-carousel">
+            @foreach($banners as $banner)
             <div class="bg-image">
                 <div class="slide-content">
-                    <h1><img src="{{ asset('front')}}/images/banners/banner-1.png"></h1>
-                    <h2>Spring Collection</h2>
+                    <h1><a href="{{ url($banner->link) }}">
+                            <img src="{{ (!empty($banner->image))?asset($banner->image):url('front/no_image.png') }}" alt="{{ $banner->title }}">
+                        </a></h1>
+                    <h2>{{ $banner->title }}</h2>
                 </div>
             </div>
-            <div class="bg-image">
-                <div class="slide-content">
-                    <h1><img src="{{ asset('front')}}/images/banners/banner-2.png"></h1>
-                    <h2>Summer Collection</h2>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
     <!-- Main-Slider /- -->

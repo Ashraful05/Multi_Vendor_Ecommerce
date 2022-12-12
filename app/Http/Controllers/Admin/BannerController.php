@@ -18,7 +18,7 @@ class BannerController extends Controller
     {
         $request->validate([
            'title'=>'required|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/|max:50',
-            'image'=>'mimes:jpeg,jpg,png,gif|required|max:60000'
+            'image'=>'mimes:jpeg,jpg,png,gif,svg|required|max:60000'
         ]);
         if($request->file('image')){
             $image = $request->file('image');
