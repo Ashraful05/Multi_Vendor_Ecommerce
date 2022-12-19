@@ -5,9 +5,14 @@
         <div class="row">
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
+                    <div class="card-header">
+                        <a href="{{ route('add_banner') }}" class="btn btn-outline-primary mt-auto" style="float: right">Add New Banner</a>
+                        <h4 class="card-title text-center">Banner Info</h4>
+
+                    </div>
                     <div class="card-body">
-                        <h4 class="card-title">Banner Info</h4>
-                        <a href="{{ route('add_banner') }}" class="btn btn-outline-primary" style="float: right">Add New Banner</a>
+
+
                         <div class="table-responsive pt-3">
                             <table id="categories" class="table table-striped table-bordered">
                                 <thead>
@@ -18,6 +23,7 @@
                                     <th>
                                         Image
                                     </th>
+                                    <th>Type</th>
                                     <th>
                                        Link
                                     </th>
@@ -40,6 +46,7 @@
                                         <td>
                                             <img src="{{ !(empty($banner->image))?asset($banner->image):url('admin/images/no_image.png') }}" alt="">
                                         </td>
+                                        <td>{{ $banner->type }}</td>
                                         <td>{{ $banner->link }}</td>
                                         <td>{{ $banner->title }}</td>
                                         <td>{{ $banner->alt }}</td>

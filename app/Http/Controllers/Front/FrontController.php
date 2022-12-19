@@ -10,7 +10,8 @@ class FrontController extends Controller
 {
     public function index()
     {
-        $banners = Banner::where('status',1)->get();
-        return view('front.index',compact('banners'));
+        $sliderBanners = Banner::where('type','slider')->where('status',1)->get();
+        $fixBanners = Banner::where('type','fix')->where('status',1)->get();
+        return view('front.index',compact('sliderBanners','fixBanners'));
     }
 }

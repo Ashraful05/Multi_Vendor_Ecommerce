@@ -5,7 +5,7 @@
     <div class="default-height ph-item">
 
         <div class="slider-main owl-carousel">
-            @foreach($banners as $banner)
+            @foreach($sliderBanners as $banner)
             <div class="bg-image">
                 <div class="slide-content">
                     <h1><a href="{{ url($banner->link) }}">
@@ -21,11 +21,13 @@
     <!-- Banner-Layer -->
     <div class="banner-layer">
         <div class="container">
+            @foreach($fixBanners as $fix)
             <div class="image-banner">
-                <a target="_blank" rel="nofollow" href="https://youtube.com/stackdevelopers" class="mx-auto banner-hover effect-dark-opacity">
-                    <img class="img-fluid" src="{{ asset('front')}}/images/banners/stack-developers.png" alt="Winter Season Banner">
+                <a target="_blank" rel="nofollow" href="{{ $fix->link }}" class="mx-auto banner-hover effect-dark-opacity">
+                    <img class="img-fluid" src="{{ (!empty($fix->image))?asset($fix->image):url('front/no_image.png') }}" alt="{{ $fix->alt }}">
                 </a>
             </div>
+            @endforeach
         </div>
     </div>
     <!-- Banner-Layer /- -->
@@ -1087,11 +1089,13 @@
     <!-- Banner-Layer -->
     <div class="banner-layer">
         <div class="container">
+            @foreach($fixBanners as $fix)
             <div class="image-banner">
-                <a target="_blank" rel="nofollow" href="https://youtube.com/stackdevelopers" class="mx-auto banner-hover effect-dark-opacity">
-                    <img class="img-fluid" src="{{ asset('front')}}/images/banners/stack-developers.png" alt="Winter Season Banner">
+                <a target="_blank" rel="nofollow" href="{{ $fix->link }}" class="mx-auto banner-hover effect-dark-opacity">
+                    <img class="img-fluid" src="{{ (!empty($fix->image))?asset($fix->image):url('front/no_image.png') }}" alt="{{ $fix->alt }}">
                 </a>
             </div>
+            @endforeach
         </div>
     </div>
     <!-- Banner-Layer /- -->

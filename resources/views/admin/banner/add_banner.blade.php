@@ -6,9 +6,12 @@
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-header">
                         <a href="{{ route('slider_banner') }}" class="btn btn-success" style="float: right">View Banner Info</a>
-                        <h4 class="card-title">Add Banner</h4>
+                        <h4 class="card-title text-center">Add Banner</h4>
+                    </div>
+                    <div class="card-body">
+
                         @if ($errors->any())
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                 <ul>
@@ -34,6 +37,14 @@
                             <div class="form-group">
                                 <label for="category_name">Banner Link</label>
                                 <input type="text" name="link" class="form-control" id="link">
+                            </div>
+                            <div class="form-group">
+                                <label for="type">Banner Type</label>
+                                <select name="type" id="type" class="form-control">
+                                    <option value="" selected disabled>Select</option>
+                                    <option value="fix">Fix</option>
+                                    <option value="slider">Slider</option>
+                                </select>
                             </div>
 
                             <div class="form-group">

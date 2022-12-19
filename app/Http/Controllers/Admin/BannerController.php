@@ -12,6 +12,7 @@ class BannerController extends Controller
 {
     public function addBanner()
     {
+//        $banner = Banner::all();
         return view('admin.banner.add_banner');
     }
     public function saveBanner(Request $request)
@@ -20,14 +21,22 @@ class BannerController extends Controller
            'title'=>'required|regex:/^([a-zA-Z]+)(\s[a-zA-Z]+)*$/|max:50',
             'image'=>'mimes:jpeg,jpg,png,gif,svg|required|max:60000'
         ]);
+        if($request->type == 'slider'){
+            $width='1920';
+            $height='720';
+        }else if($request->type == 'fix'){
+            $width='1920';
+            $height='450';
+        }
         if($request->file('image')){
             $image = $request->file('image');
             $imageName = rand(1111,9999).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(1920,720)->save('admin/images/banner_images/'.$imageName);
+            Image::make($image)->resize($width,$height)->save('admin/images/banner_images/'.$imageName);
             $imageUrl = 'admin/images/banner_images/'.$imageName;
         }
         Banner::create([
            'image'=>$imageUrl,
+           'type'=>$request->type,
            'title'=>$request->title,
             'alt'=>$request->alt,
             'link'=>$request->link,
@@ -53,14 +62,22 @@ class BannerController extends Controller
     public function updateBanner(Request $request,$id)
     {
         $oldImage = $request->old_image;
+        if($request->type=='slider'){
+            $width='1920';
+            $height='720';
+        }else if($request->type=='fix'){
+            $width='1920';
+            $height='450';
+        }
         if($request->file('image')){
             unlink($oldImage);
             $image = $request->file('image');
             $imageName = rand(1111,9999).'.'.$image->getClientOriginalExtension();
-            Image::make($image)->resize(1920,720)->save('admin/images/banner_images/'.$imageName);
+            Image::make($image)->resize($width,$height)->save('admin/images/banner_images/'.$imageName);
             $imageUrl = 'admin/images/banner_images/'.$imageName;
             Banner::findOrFail($id)->update([
                 'image'=>$imageUrl,
+                'type'=>$request->type,
                 'title'=>$request->title,
                 'alt'=>$request->alt,
                 'link'=>$request->link,
@@ -73,6 +90,7 @@ class BannerController extends Controller
         }else{
             Banner::findOrFail($id)->update([
                 'title'=>$request->title,
+                'type'=>$request->type,
                 'alt'=>$request->alt,
                 'link'=>$request->link,
                 'status'=>1
