@@ -129,7 +129,12 @@
                             <div class="form-group">
                                 <label for="is_featured">Featured Item</label>
                                 <input type="checkbox" name="is_featured" id="is_featured" class=""
-                                       value="Yes" @if(!empty($product->is_featured) && $product->is_featured =='Yes') checked="" @endif>
+                                       value="yes" @if(!empty($product->is_featured) && $product->is_featured =='yes') checked="" @endif>
+                            </div>
+                            <div class="form-group">
+                                <label for="is_best_seller">Best Seller Item</label>
+                                <input type="checkbox" name="is_best_seller" id="is_best_seller" class=""
+                                       value="yes" @if(!empty($product->is_best_seller) && $product->is_best_seller =='yes') checked="" @endif>
                             </div>
                             <button type="submit" class="form-control btn btn-primary mr-2">Submit</button>
                         </form>

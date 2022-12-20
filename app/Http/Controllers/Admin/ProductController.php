@@ -97,15 +97,6 @@ class ProductController extends Controller
                    Image::make($image)->resize(500,500)->save($mediumImagePath);
                    Image::make($image)->resize(1000,1000)->save($largeImagePath);
                    $save_url = $smallImagePath;
-
-//                $extension = $image_tmp->getClientOriginalExtension();
-//                $imageName = date('Y_m_d_Hi').'.'.$extension;
-
-
-//                Image::make($image_tmp)->resize(250,250)->save($smallImagePath);
-//                Image::make($image_tmp)->resize(500,500)->save($mediumImagePath);
-//                Image::make($image_tmp)->resize(1000,1000)->save($largeImagePath);
-
                    $product->product_image = $save_url;
                }
            }
@@ -142,6 +133,12 @@ class ProductController extends Controller
             }else{
                 $product->vendor_id=0;
             }
+            if(empty($data['product_discount'])){
+                $data['product_discount']=0;
+            }
+            if(empty($data['product_weight'])){
+                $data['product_weight']=0;
+            }
             $product->product_name = $data['product_name'];
             $product->product_code = $data['product_code'];
             $product->product_color = $data['product_color'];
@@ -157,6 +154,12 @@ class ProductController extends Controller
                 $product->is_featured=$data['is_featured'];
             }else{
                 $product->is_featured="no";
+            }
+            if(!empty($data['is_best_seller']))
+            {
+                $product->is_best_seller=$data['is_best_seller'];
+            }else{
+                $product->is_best_seller="no";
             }
             $product->status = 1;
             $product->save();

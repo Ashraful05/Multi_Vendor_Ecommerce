@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
@@ -12,6 +14,9 @@ class FrontController extends Controller
     {
         $sliderBanners = Banner::where('type','slider')->where('status',1)->get();
         $fixBanners = Banner::where('type','fix')->where('status',1)->get();
-        return view('front.index',compact('sliderBanners','fixBanners'));
+        $newProducts = Product::orderBy('id','desc')->where('status',1)->limit(10)->get();
+        $bestSellers = Product::where(['is_best_seller'=>'yes','status'=>1])->inRandomOrder()->get();
+        return view('front.index',compact('sliderBanners','fixBanners',
+            'newProducts','bestSellers'));
     }
 }
