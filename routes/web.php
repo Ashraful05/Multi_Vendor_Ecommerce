@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Front\FrontController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Category;
 
 //Route::get('/', function () {
 //    return view('welcome');
@@ -118,8 +119,14 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
 });
 
 //frontend routes.........
-Route::controller(FrontController::class)->group(function(){
-    Route::get('/','index');
+Route::namespace('App\Http\Controllers\Front')->group(function(){
+    Route::get('/','FrontController@index');
+    $categoryUrls = Category::select('url')->where('status',1)->get()->pluck('url');
+    foreach ($categoryUrls as $url)
+    {
+        Route::get('/'.$url,'ProductController@listing');
+    }
 });
+
 
 
