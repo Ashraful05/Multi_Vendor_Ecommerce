@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Product Info</h4>
-                        <a href="{{ url('admin/add-edit-product') }}" class="btn btn-outline-primary" style="float: right">Add New Product</a>
+                        <a href="{{ url('admin/add-edit-products') }}" class="btn btn-outline-primary" style="float: right">Add New Product</a>
                         <div class="table-responsive pt-3">
                             <table id="categories" class="table table-striped table-bordered">
                                 <thead>
@@ -53,9 +53,9 @@
                                         <td>{{ $product['section']['name'] }}</td>
                                         <td>{{ $product['category']['category_name'] }}</td>
                                         <td>
-{{--                                            @if(!empty($product->product_image))--}}
-{{--                                                <img src="{{ asset('admin/images/products/large/'.$product->product_image) }}" style="width: 70px;height: 70px;" alt="">--}}
-{{--                                                <img src="{{ (!empty($product->product_image))?asset('admin/images/products/large/'.$product->product_image):url('admin/images/products/small/no_image.png') }}" alt="">--}}
+{{--                                            @if(!empty($products->product_image))--}}
+{{--                                                <img src="{{ asset('admin/images/products/large/'.$products->product_image) }}" style="width: 70px;height: 70px;" alt="">--}}
+{{--                                                <img src="{{ (!empty($products->product_image))?asset('admin/images/products/large/'.$products->product_image):url('admin/images/products/small/no_image.png') }}" alt="">--}}
                                                 <img src="{{ (!empty($product->product_image))?asset($product->product_image):url('front/no_image.png') }}" alt="">
 {{--                                            @else--}}
 {{--                                                <img src="{{ asset('admin/images/products/small/no_image.png') }}" style="width: 70px;height:70px;" alt="">--}}
@@ -76,10 +76,10 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ route('add-edit-product',$product['id']) }}" title="Edit Product"><i class="mdi mdi-pencil-box" style="font-size: 30px;"></i></a>
+                                            <a href="{{ route('add-edit-products',$product['id']) }}" title="Edit Product"><i class="mdi mdi-pencil-box" style="font-size: 30px;"></i></a>
                                             <a href="{{ route('add-edit-attribute',$product['id']) }}" title="Add Attribute"><i class="mdi mdi-plus-box" style="font-size: 30px;"></i></a>
                                             <a href="{{ route('add-images',$product->id) }}" title="Add Multiple Image"><i class="mdi mdi-library-plus" style="font-size: 30px;"></i></a>
-                                            <a id="confirmDelete" href="{{ route('delete-product',$product['id']) }}" title="Delete Image"><i class="mdi mdi-file-excel-box" style="font-size: 30px;"></i></a>
+                                            <a id="confirmDelete" href="{{ route('delete-products',$product['id']) }}" title="Delete Image"><i class="mdi mdi-file-excel-box" style="font-size: 30px;"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

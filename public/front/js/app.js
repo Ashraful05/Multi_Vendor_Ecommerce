@@ -369,7 +369,7 @@ $(function () {
 
     };
     /**
-     * Initialize owl-carousel for all product-place section on page
+     * Initialize owl-carousel for all products-place section on page
      */
     const productSlider = function () {
         // Get Collection of all Product Slider
@@ -386,7 +386,7 @@ $(function () {
                 rewind: true,
                 nav: true,
                 navElement: 'div',
-                navClass: ['product-slider-previous', 'product-slider-next'],
+                navClass: ['products-slider-previous', 'products-slider-next'],
                 navText: ['<i class="fas fa-angle-left"></i>', '<i class="fas fa-angle-right"></i>'],
                 responsive: {
                     0: {
@@ -652,7 +652,7 @@ $(function () {
 (function ($, window, document, undefined) {
     'use strict';
     //  Variables
-    let $shopProductContainer = $('.product-container');
+    let $shopProductContainer = $('.products-container');
     let $searchFetchAllbtn = $('.fetch-categories ul > li > button');
 
 
@@ -691,6 +691,8 @@ $(function () {
     /**
      * Attach Click event to Grid & List
      */
+    $shopProductContainer.addClass('grid-style');
+    $shopProductContainer.removeClass('list-style');
     const attachClickGridAndList = function () {
         $('#list-anchor').on('click',function () {
             $(this).addClass('active');

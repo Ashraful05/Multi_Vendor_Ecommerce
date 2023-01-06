@@ -57,7 +57,7 @@
             this.startCountDown();
         },
         /**
-         * Start Countdown Timer on section or specific product
+         * Start Countdown Timer on section or specific products
          */
         startCountDown: function () {
             // First take wrapper element where plugin is invoke and convert

@@ -27,7 +27,8 @@ class Category extends Model
         $categoryDetails = Category::select('id','category_name','url')
             ->with('subcategories')
             ->where('url',$url)
-            ->first()->toArray();
+            ->first()
+            ->toArray();
         $catIDs=[];
         $catIDs[] = $categoryDetails['id'];
         foreach ($categoryDetails['subcategories'] as $key => $subcategory)

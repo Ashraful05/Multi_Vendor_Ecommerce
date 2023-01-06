@@ -21,8 +21,8 @@
                             </div>
                         @endif
                         <form class="forms-sample"
-                              @if(empty($product->id)) action="{{ url('admin/add-edit-product') }}"
-                              @else action="{{ route('add-edit-product',$product->id) }}" @endif  method="post" enctype="multipart/form-data">
+                              @if(empty($product->id)) action="{{ url('admin/add-edit-products') }}"
+                              @else action="{{ route('add-edit-products',$product->id) }}" @endif  method="post" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">

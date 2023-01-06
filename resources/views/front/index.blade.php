@@ -61,7 +61,7 @@
                                     @foreach($newProducts as $newProduct)
                                         <div class="item">
                                             <div class="image-container">
-                                                <a class="item-img-wrapper-link" href="{{ url('product/'.$newProduct->id) }}">
+                                                <a class="item-img-wrapper-link" href="{{ url('products/'.$newProduct->id) }}">
                                                     <img class="img-fluid" src="{{ (!empty($newProduct->product_image))?asset($newProduct->product_image):url('front/no_image.png') }}" alt="Product">
                                                 </a>
                                                 <div class="item-action-behaviors">
@@ -76,11 +76,11 @@
                                                 <div class="what-product-is">
                                                     <ul class="bread-crumb">
                                                         <li>
-                                                            <a href="{{ url('product/'.$newProduct->id) }}">{{ $newProduct->product_code }}</a>
+                                                            <a href="{{ url('products/'.$newProduct->id) }}">{{ $newProduct->product_code }}</a>
                                                         </li>
                                                     </ul>
                                                     <h6 class="item-title">
-                                                        <a href="{{ url('product/'.$newProduct->id) }}">{{ $newProduct->product_name }}</a>
+                                                        <a href="{{ url('products/'.$newProduct->id) }}">{{ $newProduct->product_name }}</a>
                                                     </h6>
                                                     <div class="item-stars">
                                                         <div class='star' title="0 out of 5 - based on 0 Reviews">
@@ -248,7 +248,7 @@
                                     @foreach($featuredProducts as $newProduct)
                                         <div class="item">
                                             <div class="image-container">
-                                                <a class="item-img-wrapper-link" href="{{ url('product/'.$newProduct->id) }}">
+                                                <a class="item-img-wrapper-link" href="{{ url('products/'.$newProduct->id) }}">
                                                     <img class="img-fluid" src="{{ (!empty($newProduct->product_image))?asset($newProduct->product_image):url('front/no_image.png') }}" alt="Product">
                                                 </a>
                                                 <div class="item-action-behaviors">
@@ -263,11 +263,11 @@
                                                 <div class="what-product-is">
                                                     <ul class="bread-crumb">
                                                         <li>
-                                                            <a href="{{ url('product/'.$newProduct->id) }}">{{ $newProduct->product_code }}</a>
+                                                            <a href="{{ url('products/'.$newProduct->id) }}">{{ $newProduct->product_code }}</a>
                                                         </li>
                                                     </ul>
                                                     <h6 class="item-title">
-                                                        <a href="{{ url('product/'.$newProduct->id) }}">{{ $newProduct->product_name }}</a>
+                                                        <a href="{{ url('products/'.$newProduct->id) }}">{{ $newProduct->product_name }}</a>
                                                     </h6>
                                                     <div class="item-stars">
                                                         <div class='star' title="0 out of 5 - based on 0 Reviews">

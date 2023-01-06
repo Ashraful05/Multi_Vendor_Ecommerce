@@ -85,23 +85,23 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
 
         //products.........
         Route::get('products',[\App\Http\Controllers\Admin\ProductController::class,'products'])->name('products');
-        Route::post('/update-product-status',[\App\Http\Controllers\Admin\ProductController::class,'updateProductStatus'])->name('update-product-status');
-        Route::match(['get','post'],'add-edit-product/{id?}',[\App\Http\Controllers\Admin\ProductController::class,'addEditProduct'])->name('add-edit-product');
-        Route::get('/delete/product/{id}',[\App\Http\Controllers\Admin\ProductController::class,'deleteProduct'])->name('delete-product');
-        Route::get('/delete-product-image/{id}',[\App\Http\Controllers\Admin\ProductController::class,'deleteProductImage'])->name('delete-product-image');
-        Route::get('/delete-product-video/{id}',[\App\Http\Controllers\Admin\ProductController::class,'deleteProductVideo'])->name('delete-product-video');
+        Route::post('/update-products-status',[\App\Http\Controllers\Admin\ProductController::class,'updateProductStatus'])->name('update-products-status');
+        Route::match(['get','post'],'add-edit-products/{id?}',[\App\Http\Controllers\Admin\ProductController::class,'addEditProduct'])->name('add-edit-products');
+        Route::get('/delete/products/{id}',[\App\Http\Controllers\Admin\ProductController::class,'deleteProduct'])->name('delete-products');
+        Route::get('/delete-products-image/{id}',[\App\Http\Controllers\Admin\ProductController::class,'deleteProductImage'])->name('delete-products-image');
+        Route::get('/delete-products-video/{id}',[\App\Http\Controllers\Admin\ProductController::class,'deleteProductVideo'])->name('delete-products-video');
 
 
         //products attribute....
         Route::match(['get','post'],'/add-edit-attribute/{id}',[\App\Http\Controllers\Admin\ProductController::class,'addEditAttribute'])->name('add-edit-attribute');
-        Route::post('/update-product-attribute-status',[\App\Http\Controllers\Admin\ProductController::class,'updateProductAttributeStatus'])->name('update-product-attribute-status');
-        Route::get('/delete-product-attribute/{id}',[\App\Http\Controllers\Admin\ProductController::class,'deleteProductAttribute'])->name('delete-product-attribute');
-        Route::match(['get','post'],'/edit-product-attribute/{id?}',[\App\Http\Controllers\Admin\ProductController::class,'editProductAttribute'])->name('edit-product-attribute');
+        Route::post('/update-products-attribute-status',[\App\Http\Controllers\Admin\ProductController::class,'updateProductAttributeStatus'])->name('update-products-attribute-status');
+        Route::get('/delete-products-attribute/{id}',[\App\Http\Controllers\Admin\ProductController::class,'deleteProductAttribute'])->name('delete-products-attribute');
+        Route::match(['get','post'],'/edit-products-attribute/{id?}',[\App\Http\Controllers\Admin\ProductController::class,'editProductAttribute'])->name('edit-products-attribute');
 
 
         //Images....
         Route::match(['get','post'],'/add-images/{id}',[\App\Http\Controllers\Admin\ProductController::class,'addImages'])->name('add-images');
-        Route::post('/update-product-image-status',[\App\Http\Controllers\Admin\ProductController::class,'updateProductImageStatus'])->name('update-product-image-status');
+        Route::post('/update-products-image-status',[\App\Http\Controllers\Admin\ProductController::class,'updateProductImageStatus'])->name('update-products-image-status');
         Route::get('/delete_product_multiple_image/{id}',[\App\Http\Controllers\Admin\ProductController::class,'deleteProductMultipleImage'])->name('delete_product_multiple_image');
 
         //Banner.........

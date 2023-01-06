@@ -146,7 +146,7 @@ $(document).ready(function(){
         });
     });
 
-    //update product status....
+    //update products status....
     $(document).on('click','.updateProductStatus',function(){
         // alert('hello');
         var status = $(this).children("i").attr("status");
@@ -163,9 +163,9 @@ $(document).ready(function(){
             success:function(response){
                 // alert(response);
                 if(response['status']==0){
-                    $("#product-"+product_id).html("<i style=\"font-size: 30px;\" class=\"mdi mdi-bookmark-outline\" status=\"InActive\"></i>")
+                    $("#products-"+product_id).html("<i style=\"font-size: 30px;\" class=\"mdi mdi-bookmark-outline\" status=\"InActive\"></i>")
                 }else if(response['status']==1){
-                    $("#product-"+product_id).html("<i style=\"font-size: 30px;\" class=\"mdi mdi-bookmark-check\" status=\"Active\"></i>")
+                    $("#products-"+product_id).html("<i style=\"font-size: 30px;\" class=\"mdi mdi-bookmark-check\" status=\"Active\"></i>")
                 }
             },
             error:function(){

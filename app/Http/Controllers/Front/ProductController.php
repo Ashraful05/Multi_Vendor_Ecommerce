@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,8 +18,14 @@ class ProductController extends Controller
 
         if($categoryCount > 0){
             $categoryDetails = Category::categoryDetails($url);
-            return $categoryDetails;
+//            return $categoryDetails;
 //            echo "category exists";die();
+            $categoryProducts = Product::whereIn('category_id',[$categoryDetails['catIds']])
+                ->where('status',1)
+                ->get()
+                ->toArray();
+//           dd($categoryProducts);
+            return view('front.products.listing',compact('categoryDetails','categoryProducts'));
         }else{
             abort(404);
         }

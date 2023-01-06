@@ -61,7 +61,7 @@
                         <hr>
                         <h4 class="card-title mb-4">Product Attributes</h4>
 
-                        <form action="{{ route('edit-product-attribute',$product->id) }}" method="post">
+                        <form action="{{ route('edit-products-attribute',$product->id) }}" method="post">
                             @csrf
                             <table id="categories" class="table table-striped table-bordered">
                                 <thead>
@@ -95,7 +95,7 @@
                                                 <a href="javascript:void(0)" class="updateAttributeStatus" id="attribute-{{ $attribute['id'] }}" attribute_id="{{ $attribute['id'] }}"><i style="font-size: 30px;" class="mdi mdi-bookmark-outline" status="InActive"></i></a>
                                             @endif
                                         </td>
-                                        <td><a id="confirmDelete" href="{{ route('delete-product-attribute',$attribute['id']) }}"><i class="mdi mdi-file-excel-box" style="font-size: 30px;"></i></a></td>
+                                        <td><a id="confirmDelete" href="{{ route('delete-products-attribute',$attribute['id']) }}"><i class="mdi mdi-file-excel-box" style="font-size: 30px;"></i></a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>

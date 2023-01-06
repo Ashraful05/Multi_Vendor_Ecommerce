@@ -89,7 +89,7 @@ class ProductController extends Controller
                {
                    $image = $request->file('product_image');
                    $imageName = rand(1111,9999).'.'.$image->getClientOriginalExtension();
-                   //upload product image after resize small:250x250, medium:500x500, large:1000x1000;
+                   //upload products image after resize small:250x250, medium:500x500, large:1000x1000;
                    $smallImagePath = 'admin/images/products/small/'.$imageName;
                    $mediumImagePath = 'admin/images/products/medium/'.$imageName;
                    $largeImagePath = 'admin/images/products/large/'.$imageName;
@@ -100,7 +100,7 @@ class ProductController extends Controller
                    $product->product_image = $save_url;
                }
            }
-            //upload product video.....
+            //upload products video.....
             if($request->hasFile('product_video'))
             {
                 $video_tmp = $request->file('product_video');
@@ -228,8 +228,8 @@ class ProductController extends Controller
         $product = Product::select('id','product_name','product_code','product_color','product_price','product_image')
             ->with('attributes')
             ->find($id);
-//        return json_decode(json_encode($product),true);
-//        dd($product);
+//        return json_decode(json_encode($products),true);
+//        dd($products);
         if($request->isMethod('post'))
         {
             $data = $request->all();
